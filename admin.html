@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ადმინ პანელი - ბაღის ნობათი</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page-body">
+
+    <div id="loginContainer" class="login-box">
+        <h2>ადმინისტრირება</h2>
+        <p>გთხოვთ შეიყვანოთ პაროლი შესასვლელად</p>
+        <form id="loginForm">
+            <input type="password" id="adminPassword" placeholder="შეიყვანეთ პაროლი" required>
+            <button type="submit" class="admin-btn save">შესვლა</button>
+        </form>
+        <p id="loginError" class="error-msg"></p>
+        <a href="index.html" class="back-home">← მთავარ გვერდზე დაბრუნება</a>
+    </div>
+
+    <div id="adminPanelContainer" class="admin-panel" style="display: none;">
+        <div class="admin-header-flex">
+            <a href="index.html" class="back-btn">← მაღაზიაში დაბრუნება</a>
+            <button onclick="logout()" class="logout-btn">გამოსვლა</button>
+        </div>
+
+        <div class="admin-container">
+            <h2>პროდუქტების მართვა</h2>
+            
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label>პროდუქტის სახელი:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label>კატეგორია:</label>
+                    <select id="productCategory">
+                        <option value="ხილი">ხილი</option>
+                        <option value="ბოსტნეული">ბოსტნეული</option>
+                        <option value="კენკრა">კენკრა</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ფასი (₾):</label>
+                    <input type="number" id="productPrice" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>ძველი ფასი (აქციისთვის):</label>
+                    <input type="number" id="productOldPrice" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>პროდუქტის ფოტოს ლინკი (URL):</label>
+                    <input type="url" id="productImgUrl" placeholder="https://example.com/photo.jpg">
+                </div>
+                <div class="form-group checkbox-group">
+                    <label><input type="checkbox" id="productInStock" checked> მარაგშია</label>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" id="saveBtn" class="admin-btn save">შენახვა</button>
+                    <button type="button" class="admin-btn cancel" onclick="resetForm()">გასუფთავება</button>
+                </div>
+            </form>
+
+            <h3 style="margin-top: 30px; margin-bottom: 15px;">არსებული ასორტიმენტი</h3>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ფოტო</th>
+                            <th>სახელი</th>
+                            <th>კატეგორია</th>
+                            <th>ფასი</th>
+                            <th>სტატუსი</th>
+                            <th>მოქმედება</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

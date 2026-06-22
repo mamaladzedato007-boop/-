@@ -1,0 +1,192 @@
+/* ბაზისური სტილები */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+header {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.logo { font-size: 24px; font-weight: bold; color: #2e7d32; }
+.logo span { color: #f57c00; }
+nav ul { display: flex; list-style: none; align-items: center; }
+nav ul li { margin-left: 20px; }
+nav ul li a { text-decoration: none; color: #555; font-weight: 600; }
+.admin-link { color: #f57c00 !important; }
+
+/* კალათის ღილაკი ნავიგაციაში */
+.cart-toggle-btn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1610348725531-843dff563e2c?q=80&w=1200') no-repeat center center/cover;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.hero-content h1 { font-size: 36px; margin-bottom: 10px; }
+.btn { display: inline-block; background: #f57c00; color: white; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; }
+
+/* ძებნა და ფილტრები */
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+    gap: 15px;
+}
+
+.search-box input {
+    padding: 10px 20px;
+    width: 300px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.search-box input:focus { border-color: #2e7d32; }
+
+.filter-container { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.filter-btn { padding: 8px 20px; border: 2px solid #2e7d32; background: transparent; color: #2e7d32; border-radius: 20px; cursor: pointer; font-weight: 600; }
+.filter-btn.active, .filter-btn:hover { background: #2e7d32; color: white; }
+
+/* ვიტრინა */
+.products-section { padding: 30px 10% 60px; text-align: center; }
+.products-section h2 { font-size: 28px; margin-bottom: 30px; color: #2e7d32; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+
+.product-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+.product-img-holder { width: 100%; height: 150px; margin-bottom: 15px; border-radius: 8px; overflow: hidden; background: #f0f0f0; }
+.product-img-holder img { width: 100%; height: 100%; object-fit: cover; }
+
+.current-price { font-size: 18px; font-weight: bold; color: #2e7d32; }
+.old-price { font-size: 14px; text-decoration: line-through; color: #999; margin-right: 8px; }
+.badge { position: absolute; top: 15px; left: 15px; padding: 4px 10px; font-size: 11px; font-weight: bold; border-radius: 20px; color: white; z-index: 2; }
+.badge.sale { background: #d32f2f; }
+.out-of-stock-label { color: #d32f2f; font-weight: bold; margin-top: 15px; }
+
+/* კილოგრამების არჩევანი ვიტრინაზე */
+.weight-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+.weight-selector input {
+    width: 70px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 15px;
+}
+.weight-selector span { font-weight: 600; color: #555; }
+
+.order-btn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.order-btn:hover { background: #1b5e20; }
+
+/* კალათის სლაიდერი */
+.cart-sidebar { position: fixed; top: 0; right: -350px; width: 350px; height: 100%; background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.1); z-index: 1000; display: flex; flex-direction: column; transition: right 0.3s ease; }
+.cart-sidebar.open { right: 0; }
+.cart-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.close-cart { background: none; border: none; font-size: 28px; cursor: pointer; }
+.cart-items-container { flex: 1; padding: 20px; overflow-y: auto; }
+
+.cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f5f5f5; }
+.cart-item-info h4 { font-size: 15px; text-align: left; }
+.cart-item-qty { font-size: 13px; color: #777; text-align: left; }
+.remove-item-btn { background: none; border: none; color: #d32f2f; cursor: pointer; font-size: 13px; }
+
+/* კალათის შიდა წონის მართვის ღილაკები */
+.cart-qty-controls { display: flex; gap: 5px; margin-top: 5px; }
+.cart-qty-controls button { background: #e0e0e0; border: none; padding: 3px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: bold; }
+.cart-qty-controls button:hover { background: #cbd5e1; }
+.empty-cart-text { text-align: center; color: #888; margin-top: 40px; font-size: 16px; }
+
+.cart-footer { padding: 20px; border-top: 1px solid #eee; background: #fafafa; }
+.cart-total { font-size: 18px; font-weight: bold; margin-bottom: 15px; display: flex; justify-content: space-between; }
+.checkout-btn { width: 100%; background: #2e7d32; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+/* კალათის ანიმაცია */
+.cart-bounce { animation: bounce 0.3s ease-in-out; }
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ადმინ ავტორიზაცია */
+.admin-page-body { background-color: #eceff1; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+.login-box { background: white; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 100%; }
+.login-box input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px; text-align: center; }
+.error-msg { color: #d32f2f; font-weight: bold; margin-bottom: 15px; }
+.back-home { display: block; margin-top: 20px; color: #555; text-decoration: none; }
+
+/* ადმინ პანელი */
+.admin-panel { width: 100%; max-width: 1000px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.admin-header-flex { display: flex; justify-content: space-between; margin-bottom: 25px; }
+.back-btn { background: #2e7d32; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+.logout-btn { background: #37474f; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+.form-group input[type="text"], .form-group input[type="number"], .form-group input[type="url"], .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+.checkbox-group { display: flex; align-items: center; gap: 5px; margin-top: 10px; }
+.form-buttons { display: flex; gap: 10px; margin-top: 20px; }
+.admin-btn { padding: 11px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; flex: 1; }
+.admin-btn.save { background: #f57c00; color: white; }
+.admin-btn.cancel { background: #e0e0e0; color: #333; }
+
+/* ადმინ ცხრილი */
+.table-responsive { overflow-x: auto; margin-top: 20px; }
+.admin-table { width: 100%; border-collapse: collapse; }
+.admin-table th, .admin-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+.admin-table th { background: #2e7d32; color: white; }
+.admin-table-img { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; }
+.action-btn { padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; margin: 2px; color: white; }
+.edit-btn { background: #2196f3; }
+.delete-btn { background: #f44336; }
+
+footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }

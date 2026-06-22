@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ბაღის ნობათი - ხილი და ბოსტნეული</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">ბაღის <span>ნობათი</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">მთავარი</a></li>
+                <li><a href="#products">პროდუქცია</a></li>
+                <li><a href="admin.html" class="admin-link">ადმინ პანელი</a></li>
+                <li><button class="cart-toggle-btn" onclick="toggleCart()">კალათა (<span id="cartCount">0</span>)</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ყველაზე ახალი და ნატურალური პროდუქტი</h1>
+            <p>პირდაპირ ბაღიდან თქვენს მაგიდაზე</p>
+            <a href="#products" class="btn">იხილეთ პროდუქცია</a>
+        </div>
+    </section>
+
+    <div class="controls-container">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="მოძებნე პროდუქტი..." onkeyup="searchProducts()">
+        </div>
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterProducts('all')">ყველა</button>
+            <button class="filter-btn" onclick="filterProducts('ხილი')">ხილი</button>
+            <button class="filter-btn" onclick="filterProducts('ბოსტნეული')">ბოსტნეული</button>
+            <button class="filter-btn" onclick="filterProducts('კენკრა')">კენკრა</button>
+        </div>
+    </div>
+
+    <section id="products" class="products-section">
+        <h2>ჩვენი ასორტიმენტი</h2>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>თქვენი კალათა</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div id="cartItems" class="cart-items-container">
+            </div>
+        <div class="cart-footer">
+            <div class="cart-total">ჯამი: <span id="cartTotal">0.00</span> ₾</div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">შეკვეთის გაფორმება (WhatsApp)</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ბაღის ნობათი. ყველა უფლება დაცულია.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
